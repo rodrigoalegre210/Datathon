@@ -1,50 +1,66 @@
-# Datathon
+<h1 align="center"> 🏠 Datathon: Real Estate Price Prediction (Colombia) </h1>
 
-## Proyecto individual 2
+> **Proyecto Individual Nº2** - Etapa de Laboratorios (Henry Bootcamp)
+> 
+> **Rol:** Data Scientist / ML Engineer
 
-En este proyecto hacemos una limpieza de datos y un modelo de Machine Learning para predecir si el precio de un inmueble del país de Colombia es caro o barato.
+---
 
-## Tecnologías usadas:
+## 📄 Descripción del Proyecto
 
-- Python.
-- - Pandas. 
-- - Numpy.
-- - Geopandas.
-- - Folium.
-- - Seaborn.
-- - cmath
-- scikit-learn
+Este proyecto consiste en el desarrollo de un modelo de **Machine Learning de Clasificación** para predecir si el precio de un inmueble en Colombia se categoriza como "Caro" o "Barato" en función de sus características físicas y ubicación geográfica. El reto principal fue el tratamiento de datos espaciales y la optimización de un modelo de clasificación para obtener métricas de precisión competitivas.
 
-## Limpieza
+### Objetivos Clave:
+* **Feature Engineering:** Creación de una variable objetivo (target) basada en el umbral de precios.
+* **Geospatial Cleaning:** Detección y eliminación de outliers geográficos (coordenadas fuera del territorio colombiano).
+* **Modelado Predictivo:** Implementación y entrenamiento de un clasificador basado en árboles de decisión.
 
-Durante el proceso de limpieza creamos una columna llamada 'target' la cual contiene los datos de la columna 'price', que esta contiene los precios de los inmuebles, pero con dos números que definen si son caros (1) o baratos (0).
+---
 
-Luego vemos la correlación entre las columnas: 'lat', 'lon', 'rooms', 'bedrooms', 'bathrooms', 'surface_total', 'sorface_covered' y 'target'.
+## 🛠️ Tecnologías Utilizadas
 
-<img width="428" alt="Captura de pantalla 2022-11-04 092817" src="https://user-images.githubusercontent.com/105827215/199972744-6556c126-b30f-4bfb-8aaa-3575069be97f.png">
+| Categoría | Herramientas |
+|-----------|--------------|
+| **Lenguaje** | Python (Pandas, Numpy) |
+| **Machine Learning** | Scikit-learn |
+| **Análisis Geoespacial** | Geopandas, Folium |
+| **Visualización** | Seaborn, Matplotlib |
 
-También rellenamos valores nulos y sacamos los outliers que pueden hacer que falle nuestro modelo.
-En las columnas 'lat' y 'lon' se encontraban dos outliers que daban como coordenada a Chile y Estados Unidos siendo estas removidas y quedando solo las coordenadas de Colombia. 
+---
 
-<img width="728" alt="asd" src="https://user-images.githubusercontent.com/105827215/199974696-1da94790-f421-4f84-817b-b96ff2ff9e88.png">
+## ⚙️ Pipeline del Proyecto
 
-Luego volvemos a ver la relación entre algunas columnas planificiadas usar para el modelo viendo los datos de la columna 'target' en verde (0) y naranja (1).
+### 1. Limpieza y Análisis Exploratorio (EDA)
+Se realizó una limpieza profunda enfocada en la integridad de los datos:
+- **Tratamiento de Outliers:** Identificación de errores de carga en coordenadas (`lat`, `lon`) que ubicaban propiedades fuera de Colombia.
+- **Análisis de Correlación:** Estudio de la relación entre variables dimensionales (habitaciones, baños, superficie) y el precio.
 
-<img width="407" alt="asdfasdf" src="https://user-images.githubusercontent.com/105827215/199975657-434b82d5-c798-4080-8620-4668edffbb63.png">
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/105827215/199972744-6556c126-b30f-4bfb-8aaa-3575069be97f.png" alt="Matriz de Correlación" width="450">
+</p>
 
-Todos estos cambios y selecciones de columnas también se ejecutaran con el archivo .csv de testeo para que coincidan en el modelo.
+### 2. Ingeniería de Características
+- **Variable Target:** Se transformó la variable continua `price` en una categoría binaria: **1 (Caro)** y **0 (Barato)**.
+- **Codificación:** Aplicación de técnicas de transformación para la columna `property_type`, permitiendo al modelo procesar variables categóricas.
 
-## Modelo
+### 3. Modelo de Clasificación (Decision Tree)
+Se optó por un **Árbol de Decisión** debido a su capacidad para manejar relaciones no lineales y su alta interpretabilidad. El modelo evalúa atributos en nodos de decisión hasta llegar a una clasificación final en las hojas.
 
-Para el modelo tomamos en cuenta la columna 'lat', 'lon', 'bathrooms' y dividimos los datos de la columna 'property_type' en columnas diferentes. Y por último, como no, la columna 'target' creada anteriormente usando los precios de la columna 'price'.
 
-El modelo de clasificación usado en este proyecto es: Árbol de decisión. 
 
-Árbol de decisión: Está compuesta por nodos, ramas. Esta va recorriendo el árbol de decisión y en cada nodo, el árbol hace una pregunta sobre sus atributos. Según la respuesta, deriva a la respuesta por alguna de sus ramas, donde puede ocurrir en otra pregunta o que termine en una hoja, que esta contiene la etiqueta que le corresponde a esa instancia, finalizando el recorrido en el árbol.
+---
 
-Las columnas en total usadas en este modelo son : 'lat', 'lon', 'bathrooms', 'Apartamento', 'Casa', 'Otro', 'Lote', 'Local comercial', 'Finca', 'Oficina' y 'target'
+## 📈 Resultados y Métricas
 
-Finalizado el modelo obtenemos los siguientes resultados:
+El modelo fue evaluado bajo las métricas de **Accuracy** y **Recall** para asegurar un equilibrio entre la precisión global y la capacidad de detectar correctamente las propiedades "caras".
 
-- Accuracy: 0.8995697291824855
-- Recall: 0.7676211453744494
+| Métrica | Resultado |
+|---------|-----------|
+| **Accuracy** | **89.95%** |
+| **Recall** | **76.76%** |
+
+$$\text{Accuracy} = \frac{TP + TN}{TP + TN + FP + FN}$$
+
+---
+
+<h3 align="center">🚀 Desarrollado por Rodrigo - Data Science & AI Engineer 🚀</h3>
