@@ -74,12 +74,4 @@ El modelo fue evaluado bajo las siguientes métricas de performance en el set de
 
 ---
 
-## 📂 Estructura del Repositorio
-
-* **`Analisis_ML_Colombia.ipynb`**: Notebook con el flujo completo de EDA, Limpieza, Feature Engineering y Modelado.
-* **`datasets/`**: Carpeta que contiene los archivos de *train* y *test* originales (.csv).
-* **`predicciones.csv`**: Archivo final con los resultados de la clasificación sobre el dataset de testeo.
-
----
-
 <h3 align="center">🚀 Desarrollado por Rodrigo - Data Science & AI Engineer 🚀</h3>
