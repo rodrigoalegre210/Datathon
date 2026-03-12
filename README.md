@@ -52,7 +52,7 @@ Analizamos visualmente cómo interactúan las variables clave seleccionadas (`la
   <img src="descarga.png" alt="Relación de Features y Target" width="450">
   <br>
   <div style="background-color: #f9f9f9; padding: 10px; border-radius: 5px; border: 1px solid #ddd; display: inline-block;">
-    <em>Visualización 3: Análisis de distribución de las clases 'Barato' (verde) y 'Caro' (naranja) respecto a variables clave. <br> (Texto sobre fondo claro para visibilidad en temas oscuros)</em>
+    <em>Visualización 3: Análisis de distribución de las clases 'Barato' (verde) y 'Caro' (naranja) respecto a variables clave. </em>
   </div>
 </p>
 
