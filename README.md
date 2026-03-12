@@ -41,7 +41,7 @@ Este proyecto se enfoca en el desarrollo de un modelo de **Machine Learning de C
 
 ### FASE 3: Distribución de Clases (Features vs Target)
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/105827215/199975657-434b82d5-c798-4080-8620-4368edffbb63.png" alt="Relación Features y Target" width="450">
+  <img src="descarga.png" alt="Relación Features y Target" width="450">
   <br>
   <em>Visualización 3: Dispersión de variables clave segmentadas por categoría de precio (Verde: Barato, Naranja: Caro).</em>
 </p>
