@@ -49,7 +49,7 @@ Una parte crucial del EDA detectó ruido significativo en los datos de ubicació
 Analizamos visualmente cómo interactúan las variables clave seleccionadas (`lat`, `lon`, `bathrooms`) con nuestra variable objetivo. Esto nos permitió confirmar visualmente cómo interactúan las variables de ubicación y servicios con la clasificación de precio.
 
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/105827215/199975657-434b82d5-c798-4080-8620-4368edffbb63.png" alt="Relación de Features y Target" width="450">
+  <img src="descarga.png" alt="Relación de Features y Target" width="450">
   <br>
   <div style="background-color: #f9f9f9; padding: 10px; border-radius: 5px; border: 1px solid #ddd; display: inline-block;">
     <em>Visualización 3: Análisis de distribución de las clases 'Barato' (verde) y 'Caro' (naranja) respecto a variables clave. <br> (Texto sobre fondo claro para visibilidad en temas oscuros)</em>
