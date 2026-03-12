@@ -8,7 +8,7 @@
 
 ## 📄 Descripción del Proyecto
 
-Este proyecto aborda el desarrollo de un modelo de **Machine Learning de Clasificación** para predecir si el precio de una propiedad inmobiliaria en Colombia entra en la categoría de "Caro" (1) o "Barato" (0). El flujo de trabajo abarca desde la adquisición y limpieza profunda de datos (incluyendo análisis geoespacial) hasta el entrenamiento e interpretación de un modelo predictivo robusto.
+Este proyecto se enfoca en el desarrollo de un modelo de **Machine Learning de Clasificación** para predecir si el precio de una propiedad inmobiliaria en Colombia se categoriza como "Caro" (1) o "Barato" (0). El flujo de trabajo abarca desde la limpieza profunda de datos geoespaciales hasta el entrenamiento de un modelo de clasificación robusto.
 
 ---
 
@@ -16,67 +16,62 @@ Este proyecto aborda el desarrollo de un modelo de **Machine Learning de Clasifi
 
 | Categoría | Herramientas |
 |-----------|--------------|
-| **Lenguaje** | Python (Pandas, Numpy) |
+| **Lenguaje** | Python (Pandas, Numpy, cmath) |
 | **Machine Learning** | Scikit-learn (Decision Tree Classifier) |
 | **Análisis Geoespacial** | Geopandas, Folium |
 | **Visualización** | Seaborn, Matplotlib |
 
 ---
 
-## ⚙️ Pipeline del Proyecto & Visualizaciones Clave
+## ⚙️ Pipeline del Proyecto & Visualizaciones
 
-El desarrollo se estructuró en fases críticas, apoyadas por análisis visual para la toma de decisiones.
-
-### FASE 1: Análisis Exploratorio y Selección de Features
-
-El primer paso fue entender la relación entre las características físicas de los inmuebles y la variable objetivo (precio). Se utilizó una matriz de correlación para identificar qué variables (como baños, habitaciones o superficie) tenían el mayor poder predictivo para definir si una propiedad es "Cara" o "Barata".
+### FASE 1: Análisis Exploratorio y Correlación
+Se realizó un estudio de las variables físicas (habitaciones, baños, superficie) para determinar su impacto en el precio. La matriz de correlación fue fundamental para seleccionar las *features* con mayor peso predictivo.
 
 <p align="center">
-  <img src="RUTA/A/TU/IMAGEN_1_CORRELACION.png" alt="Matriz de Correlación de Variables" width="500">
+  <img src="https://user-images.githubusercontent.com/105827215/199972744-6556c126-b30f-4bfb-8aaa-3575069be97f.png" alt="Matriz de Correlación" width="450">
   <br>
-  <em>Visualización 1: Matriz de calor mostrando la correlación entre características (lat, lon, rooms, etc.) y el target.</em>
+  <em>Visualización 1: Mapa de calor de correlación entre variables técnicas y el target.</em>
 </p>
 
-### FASE 2: Limpieza Geoespacial Profunda
-
-Una parte crucial del EDA detectó ruido significativo en los datos de ubicación. Se identificaron **outliers geoespaciales** masivos (coordenadas que ubicaban propiedades de "Colombia" en Chile o Estados Unidos). Usando Geopandas y Folium, se filtraron estos registros para restringir el análisis exclusivamente al territorio colombiano, asegurando la integridad del modelo.
+### FASE 2: Limpieza y Tratamiento de Outliers Geoespaciales
+Se detectaron inconsistencias críticas en las coordenadas de longitud y latitud, con registros que situaban propiedades fuera del territorio colombiano (Chile y EE.UU.). Se aplicó un filtro geográfico para asegurar la calidad de la data.
 
 <p align="center">
-  <img src="RUTA/A/TU/IMAGEN_2_OUTLIERS_GEO.png" alt="Visualización de Outliers Geográficos" width="800">
+  <img src="https://user-images.githubusercontent.com/105827215/199974696-1da94790-f421-4f84-817b-b96ff2ff9e88.png" alt="Outliers Geoespaciales" width="700">
   <br>
-  <em>Visualización 2: Identificación y remoción de coordenadas erróneas fuera de Colombia.</em>
+  <em>Visualización 2: Distribución geográfica antes y después de remover outliers de ubicación.</em>
 </p>
 
-### FASE 3: Distribución de Clases Pre-Modelado
-
-Antes de entrenar el modelo, se analizó la relación visual entre las features seleccionadas (ej. `lat`, `lon`, `bathrooms`) y la distribución de la variable `target` recién creada. Esto permitió confirmar visualmente cómo interactúan las variables de ubicación y servicios con la clasificación de precio.
+### FASE 3: Distribución de Clases (Features vs Target)
+Analizamos visualmente cómo interactúan las variables seleccionadas con nuestra variable objetivo. En este gráfico se observa la clara separación entre propiedades baratas (verde) y caras (naranja).
 
 <p align="center">
-  <img src="RUTA/A/TU/IMAGEN_3_RELACION_TARGET.png" alt="Relación de Features y Target" width="500">
+  <img src="https://user-images.githubusercontent.com/105827215/199975657-434b82d5-c798-4080-8620-4368edffbb63.png" alt="Relación Features y Target" width="450">
   <br>
-  <em>Visualización 3: Análisis de distribución de las clases 'Barato' (verde) y 'Caro' (naranja) respecto a variables clave.</em>
+  <em>Visualización 3: Dispersión de variables clave segmentadas por categoría de precio.</em>
 </p>
 
 ---
 
 ## 📊 Modelo y Resultados
 
-Se implementó un **Árbol de Decisión (Decision Tree Classifier)** para la tarea de clasificación binaria, dada su alta interpretabilidad y capacidad para manejar relaciones no lineales entre la ubicación y el precio.
+Se implementó un **Árbol de Decisión**, un algoritmo ideal por su capacidad para manejar decisiones basadas en umbrales geográficos y estructurales.
 
-Finalizado el entrenamiento, se obtuvieron las siguientes métricas de performance en el set de testeo:
+| Métrica | Resultado |
+|---------|-----------|
+| **Accuracy** | **89.96%** |
+| **Recall** | **76.76%** |
 
-| Métrica | Resultado | Fórmula |
-|---------|-----------|---------|
-| **Accuracy** | **89.96%** | $$\frac{TP + TN}{TP + TN + FP + FN}$$ |
-| **Recall** | **76.76%** | $$\frac{TP}{TP + FN}$$ |
+$$\text{Accuracy} = \frac{TP + TN}{TP + TN + FP + FN}$$
 
 ---
 
 ## 📂 Estructura del Repositorio
 
-* **`Datathon_Inmuebles.ipynb`**: Notebook con el flujo completo de EDA, Limpieza, Feature Engineering y Modelado.
-* **`datasets/`**: Carpeta que contiene los archivos de *train* y *test* originales.
-* **`predicciones.csv`**: Archivo final con los resultados de la clasificación sobre el dataset de testeo.
+* **`Analisis_ML_Colombia.ipynb`**: Notebook con el flujo completo de EDA y Modelado.
+* **`datasets/`**: Archivos CSV de entrenamiento y testeo.
+* **`predicciones.csv`**: Resultados finales de la clasificación.
 
 ---
 
